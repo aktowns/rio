@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "rio"
   gem.homepage = "http://github.com/aktowns/rio"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A ruby wrapper around the Io VM}
+  gem.description = %Q{RIO uses the ffi gem to write a fancy abstracted wrapper around the Io VM}
   gem.email = "ashleyis@me.com"
   gem.authors = ["Ashley Towns"]
   # dependencies defined in Gemfile
