@@ -5,16 +5,13 @@ RIO is a simple wrapper around the IO VM, currently a work in progress.
 At the moment you can do things like this.
 
   RIO.eval do |io|
-
     io.run 'write("Hello World!")'
 
     io.run 'abc := "123"'
-
     puts io['abc'] # => "123"
+
     io['goodbye'] = "Goodbye World!"
-
     io.run 'write(goodbye)'
-
   end
 
 Much more to come.
