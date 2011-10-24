@@ -14,7 +14,7 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "rio"
+  gem.name = "rio-ffi"
   gem.homepage = "http://github.com/aktowns/rio"
   gem.license = "MIT"
   gem.summary = %Q{A ruby wrapper around the Io VM}
