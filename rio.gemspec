@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "lib/rio.rb",
     "lib/rio/IoNumber.rb",
     "lib/rio/rio.rb",
+    "rio.gemspec",
     "test/helper.rb",
     "test/test_rio.rb"
   ]
