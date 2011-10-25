@@ -11,6 +11,7 @@ module Io
 	typedef :pointer, :IoMethodFunc
 	typedef :pointer, :IoMethodTable
 	typedef :pointer, :IoSeq
+	typedef :pointer, :IoTagCloneFunc
 
 	class IoState < FFI::Struct
 		layout	:randomGen, 					:pointer,
@@ -137,6 +138,8 @@ module Io
 	attach_function :IoObject_protoClean, [ :IoObject ], :void 							# IoObject_protoClean(IoObject *self)
 	attach_function :IoObject_hasDirtySlot_, [ :IoObject, :IoMessage, :IoObject ], :IoObject 	# IoObject_hasDirtySlot_(IoObject *self, IoMessage *m, IoObject *locals)
 	attach_function :IoObject_asString_, [ :IoObject, :IoMessage ], :IoSeq 				# IoObject_asString_(IoObject *self, IoMessage *m)
+	# IoObject_inline
+	attach_function :IoObject_hasCloneFunc_, [ :IoObject , :IoTagCloneFunc ], :int 		# IoObject_hasCloneFunc_(IoObject *self, IoTagCloneFunc *func);
 
 	# IoNumber
 	attach_function :IoNumber_proto, [ :pointer ], :IoNumber 							# IoNumber_proto(void *state)
@@ -189,7 +192,7 @@ module Io
 	attach_function :IoSeq_rawEqualsCString_, [ :IoSeq, :string ], :int 				# IoSeq_rawEqualsCString_(IoSeq *self, const char *s)
 	attach_function :IoSeq_rawAsDoubleFromHex, [ :IoSeq ], :double 						# IoSeq_rawAsDoubleFromHex(IoSeq *self)
 	attach_function :IoSeq_rawAsDoubleFromOctal, [ :IoSeq ], :double 					# IoSeq_rawAsDoubleFromOctal(IoSeq *self)
-	
+
 	# IoState
 	attach_function :IoState_new, [ ], :pointer											# IoState_new(void)
 	attach_function :IoState_new_atAddress, [ :pointer ], :void 						# IoState_new_atAddress(void* address)
@@ -219,5 +222,11 @@ module Io
 
 	# IoState_eval
 	attach_function :IoState_doCString_, [ :pointer, :string ], :IoObject
+
+	def self.IOOBJECT_ISTYPE(ioself, typeName)
+		addr = ffi_libraries.map{|lib|lib.find_function("Io#{typeName}_rawClone").address}.compact.first
+		ptrcb = FFI::Pointer.new(addr)
+		IoObject_hasCloneFunc_(ioself, ptrcb)
+	end
 
 end
