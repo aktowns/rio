@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/IO/IO.rb",
+    "lib/rio-ffi.rb",
     "lib/rio/IoNumber.rb",
     "lib/rio/rio.rb",
     "rio-ffi.gemspec",
