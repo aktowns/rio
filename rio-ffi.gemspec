@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rio-ffi"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ashley Towns"]
-  s.date = "2011-10-24"
+  s.date = "2011-10-25"
   s.description = "RIO uses the ffi gem to write a fancy abstracted wrapper around the Io VM"
   s.email = "ashleyis@me.com"
   s.extra_rdoc_files = [
@@ -25,11 +25,9 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/IO/IO.rb",
-    "lib/rio.rb",
     "lib/rio/IoNumber.rb",
     "lib/rio/rio.rb",
     "rio-ffi.gemspec",
-    "rio.gemspec",
     "test/helper.rb",
     "test/test_rio.rb"
   ]
